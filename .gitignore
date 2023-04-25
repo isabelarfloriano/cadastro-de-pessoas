@@ -1,0 +1,24 @@
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+*.log
+/logs/
+.env
+.git
+/bin/
+/backend/target/
+/backend/.vscode
+/backend/.mvn
+/backend/.env
+
+### STS ###
+/backend/.apt_generated
+/backend/.classpath
+/backend/.factorypath
+/backend/.project
+/backend/.settings
+/backend/.springBeans
+/backend/.sts4-cache
+
+
