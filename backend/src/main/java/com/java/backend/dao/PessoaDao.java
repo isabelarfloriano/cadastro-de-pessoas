@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
-
-import com.google.gson.Gson;
 import com.java.backend.config.DataBaseConfig;
 import com.java.backend.model.Pessoa;
 
@@ -30,20 +28,23 @@ public class PessoaDao {
   }
 
     public List<Pessoa> listarPessoas() {
-        String sql = "SELECT * FROM pessoas_cadastradas";
-        return jdbcTemplate.query(sql, (rs, rowNum) -> {
-            Pessoa pessoa = new Gson().fromJson(rs.getString("json"), Pessoa.class);
-            pessoa.setId(rs.getInt("id"));
-            return pessoa;
-        });
+      String sql = "SELECT id, nome, email, telefone, profissao FROM pessoas_cadastradas";
+      return jdbcTemplate.query(sql, (rs, rowNum) -> {
+          Pessoa pessoa = new Pessoa();
+          pessoa.setId(rs.getInt("id"));
+          pessoa.setNome(rs.getString("nome"));
+          pessoa.setEmail(rs.getString("email"));
+          pessoa.setTelefone(rs.getString("telefone"));
+          pessoa.setProfissao(rs.getString("profissao"));
+          return pessoa;
+      });
     }
 
     public void cadastrarPessoa(Pessoa pessoa) {
         int id = gerarId();
         pessoa.setId(id);
-        String json = new Gson().toJson(pessoa);
-        String sql = "INSERT INTO pessoas_cadastradas (id, json) VALUES (?, ?)";
-        jdbcTemplate.update(sql, id, json);
+        String sql = "INSERT INTO pessoas_cadastradas (id, nome, email, telefone, profissao) VALUES (?, ?, ?, ?, ?)";
+        jdbcTemplate.update(sql, id, pessoa.getNome(), pessoa.getEmail(), pessoa.getTelefone(), pessoa.getProfissao());
     }
 
     public void deletarPessoa(int id) {
