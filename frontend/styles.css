@@ -79,6 +79,7 @@ button.remover {
 
 button.remover:hover {
   background-color: #c62828;
+  color: white;
 }
 
 h1 {
