@@ -2,7 +2,7 @@
 
 ## Descrição do Projeto
 
-O projeto Cadastro de Pessoas é uma aplicação web fullstack que permite o cadastro e remoção de pessoas em um sistema. O frontend é construído em HTML, CSS e JavaScript, sem o uso de frameworks, e a lógica do CRUD é implementada no backend, construído em Java usando o Spring. O projeto utiliza um banco de dados SQL (como MySQL ou PostgreSQL) para armazenar as informações das pessoas, e para realização de testes é utilizado o H2, JUnit e Mockito. A lógica de inserção e remoção de dados é implementada utilizando JDBC e SQL puro, sem o uso de JPA ou Hibernate. A interface do usuário é amigável e fácil de usar, permitindo que o usuário cadastre e remova pessoas com facilidade e segurança.
+O projeto Cadastro de Pessoas é uma aplicação web fullstack que permite o cadastro e remoção de pessoas em um sistema. O frontend é construído em HTML, CSS e JavaScript, sem o uso de frameworks, e a lógica do CRUD é implementada no backend, construído em Java usando o Spring. O projeto utiliza um banco de dados SQL (como MySQL) para armazenar as informações das pessoas, e para realização de testes é utilizado o H2, JUnit e Mockito. A lógica de inserção e remoção de dados é implementada utilizando JDBC e SQL puro, sem o uso de JPA ou Hibernate. A interface do usuário é amigável e fácil de usar, permitindo que o usuário cadastre e remova pessoas com facilidade e segurança.
 
 # :rotating_light: Como utilizar
 ## :round_pushpin: Pré-requisitos :memo:
