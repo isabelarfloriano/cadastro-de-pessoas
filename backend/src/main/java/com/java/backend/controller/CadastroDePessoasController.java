@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import com.google.gson.Gson;
 import com.java.backend.dao.PessoaDao;
 import com.java.backend.exception.PessoaNotFoundException;
 import com.java.backend.model.Pessoa;
@@ -14,19 +15,22 @@ import com.java.backend.model.Pessoa;
 public class CadastroDePessoasController {
 
   private final PessoaDao pessoaDao;
+  private final Gson gson;
 
   @Autowired
-  public CadastroDePessoasController(PessoaDao pessoaDao) {
+  public CadastroDePessoasController(PessoaDao pessoaDao, Gson gson) {
       this.pessoaDao = pessoaDao;
+      this.gson = gson;
   }
 
   @GetMapping
-  public ResponseEntity<List<Pessoa>> listarPessoasCadastradas() {
+  public ResponseEntity<String> listarPessoasCadastradas() {
       List<Pessoa> pessoas = pessoaDao.listarPessoas();
       if (pessoas.isEmpty()) {
           return new ResponseEntity<>(HttpStatus.NO_CONTENT);
       }
-      return new ResponseEntity<>(pessoas, HttpStatus.OK);
+      String json = gson.toJson(pessoas);
+      return new ResponseEntity<>(json, HttpStatus.OK);
   }
 
   @PostMapping
